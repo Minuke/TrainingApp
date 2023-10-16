@@ -1,0 +1,9 @@
+<ng-container *ngIf="isLoading; else showCompanies">
+  <p-progressSpinner></p-progressSpinner>
+</ng-container>
+
+<ng-template #showCompanies>
+  <app-card-company *ngFor="let company of companies;" [company]="company"></app-card-company>
+</ng-template>
+
+

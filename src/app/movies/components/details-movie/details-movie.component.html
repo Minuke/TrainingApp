@@ -1,0 +1,30 @@
+<ng-container *ngIf="isLoading; else showDetails">
+  <p-progressSpinner></p-progressSpinner>
+</ng-container>
+
+<ng-template #showDetails>
+  <div>
+    <div>
+      <h2>Details of this Movie:</h2>
+      <ul>
+        <li><b>Title:</b>{{ movie.title }}</li>
+        <li><b>Rating: </b>{{ movie.imdbRating }}</li>
+        <li><b>Genres: </b>{{ movie.genre }}</li>
+        <li><b>Duration: </b>{{ movie.duration | Duration }}</li>
+        <li><b>Poster: </b><img src="{{ movie.poster }}" alt="{{ movie.poster }}" width="100" height="100"></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2>Actors in this Movie:</h2>
+      <ul>
+        <li *ngFor="let actor of actorsInMovie">
+          {{ actor.first_name }} {{ actor.last_name }} - Gender: {{ actor.gender }}, Birthdate: {{ actor.birthdate }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-template>
+
+
+

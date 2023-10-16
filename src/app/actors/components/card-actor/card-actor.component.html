@@ -1,0 +1,21 @@
+<div>
+  <ul>
+    <li><b>First name: </b>{{ actor.first_name }}</li>
+    <li><b>Last name: </b>{{ actor.last_name }}</li>
+    <li><b>Gender: </b>{{ actor.gender }}</li>
+    <li><b>Birth date: </b>{{ actor.birthdate }}</li>
+    <li><b>Image: </b>
+      <img [src]="actor.img | NotFoundImage" alt="{{ actor.img }}" width="100" height="100">
+    </li>
+    <li><b>Movies in which he has participated: </b>
+      <span *ngFor="let movie of moviesInActor">
+        <ul>
+          <li>{{ movie.title }}</li>
+        </ul>
+      </span>
+      </li>
+  </ul>
+
+
+
+</div>

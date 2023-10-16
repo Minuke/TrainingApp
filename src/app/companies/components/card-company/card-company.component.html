@@ -1,0 +1,32 @@
+<div>
+  <ul>
+    <li><b>Name: </b>{{ company.name }}</li>
+    <li><b>Country: </b>{{ company.country }}</li>
+    <li><b>Create year: </b>
+      <ng-container *ngIf="company.createYear < 2000">
+        <img src="/assets/icons/camera-reels.svg" alt="Camera Reels Icon">
+      </ng-container>
+      {{ company.createYear }}
+    </li>
+    <li><b>Employees: </b>
+      <img src="/assets/icons/file-earmark-person.svg" alt="File Earmark Icon"> - {{ company.employees }}
+    </li>
+    <li><b>Rating: </b>
+      <star-rating
+        [starType]="'svg'"
+        [numOfStars]="10"
+        [rating]="company.rating"
+        [readOnly]="true"
+        >
+      </star-rating>
+    </li>
+    <li><b>Name: </b>{{ company.name }}</li>
+    <li><b>Movies produced: </b>
+      <span *ngFor="let movie of moviesProduced">
+        <ul>
+          <li>{{ movie.title }}</li>
+        </ul>
+      </span>
+      </li>
+  </ul>
+</div>

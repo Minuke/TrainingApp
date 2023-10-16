@@ -1,0 +1,11 @@
+
+<ng-container *ngIf="isLoading; else showMovies">
+  <p-progressSpinner></p-progressSpinner>
+</ng-container>
+
+<ng-template #showMovies>
+  <app-card-movie *ngFor="let movie of movies;" [movie]="movie"></app-card-movie>
+</ng-template>
+
+
+

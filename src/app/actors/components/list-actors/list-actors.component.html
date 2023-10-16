@@ -1,0 +1,9 @@
+
+
+<ng-container *ngIf="isLoading; else showActors">
+  <p-progressSpinner></p-progressSpinner>
+</ng-container>
+
+<ng-template #showActors>
+  <app-card-actor *ngFor="let actor of actors;" [actor]="actor"></app-card-actor>
+</ng-template>
