@@ -1,17 +1,21 @@
-<div class="card card-movie">
-  <img [src]="movie.poster | NotFoundImage" class="card-img-top" alt="{{movie.poster}}">
+<div class="card m-4" style="width: 15rem;">
+  <img [src]="movie.poster | NotFoundImage" alt="{{movie.poster}}" class="card-img-top">
   <div class="card-body">
     <h5 class="card-title">{{ movie.title }}</h5>
-    <p class="card-text">{{ movie.genre }}</p>
-    <a [routerLink]="['/movies', movie.id ]" class="btn btn-primary">Details</a>
-    <a (click)="showDialog()" class="btn btn-danger">Delete</a>
+    <div class="buttons-card">
+      <button [routerLink]="['/movies', movie.id ]" class="btn-basic me-4">Details</button>
+      <button (click)="showDialog()" class="btn-warning">Delete</button>
+    </div>
   </div>
 </div>
 
-<p-dialog header="Header" [(visible)]="visible" [style]="{width: '50vw'}">
-  <p>Delete the movie: {{ movie.title }}</p>
-  <button (click)="closeDialog()" class="btn btn-primary">Cancel</button>
-  <button (click)="deleteMovie(movie.id)" class="btn btn-danger">Delete</button>
+
+<p-dialog header="Delete Movie" [(visible)]="visible" [style]="{width: '50vw'}" class="p-0">
+  <div class="text-dialog">Are you sure you want to delete the<span class="text-muted"><b> {{ movie.title }} </b></span>movie?</div>
+  <div class="buttons-card">
+    <button (click)="closeDialog()" class="btn-basic me-4">Cancel</button>
+    <button (click)="deleteMovie(movie.id)" class="btn-warning">Delete</button>
+  </div>
 </p-dialog>
 
 

@@ -1,14 +1,84 @@
 {
   "movies": [
     {
-      "id": 6,
-      "title": "V/H/S: Viral",
-      "poster": "http://dummyimage.com/400x600.png/dddddd/000000",
+      "id": 2,
+      "title": "Alien",
+      "poster": "/assets/images/movies/alien.jpg",
+      "genre": [
+        "Science Fiction",
+        "Horror"
+      ],
+      "year": 1079,
+      "duration": 161,
+      "imdbRating": 8.27,
+      "actors": [
+        4,
+        5,
+        6,
+        2
+      ]
+    },
+    {
+      "id": 3,
+      "title": "The Cabin in the Woods",
+      "poster": "/assets/images/movies/the-cabin-in-the-woods.jpg",
       "genre": [
         "Horror",
-        "Thriller"
+        "Fantasy"
       ],
-      "year": 1995,
+      "year": 2011,
+      "duration": 175,
+      "imdbRating": 6.25,
+      "actors": [
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "title": "You’re Next",
+      "poster": "/assets/images/movies/you-are-next.jpg",
+      "genre": [
+        "Thriller",
+        "Horror",
+        "Mystery"
+      ],
+      "year": 2011,
+      "duration": 190,
+      "imdbRating": 3.66,
+      "actors": [
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Mad Max",
+      "poster": "/assets/images/movies/mad-max.jpg",
+      "genre": [
+        "Action",
+        "Thriller",
+        "Science Fiction",
+        "Adventure"
+      ],
+      "year": 1979,
+      "duration": 117,
+      "imdbRating": 5.36,
+      "actors": [
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": 6,
+      "title": "The Grand Budapest Hotel",
+      "poster": "/assets/images/movies/the-grand-budapest-hotel.jpg",
+      "genre": [
+        "Comedy",
+        "Drama"
+      ],
+      "year": 2014,
       "duration": 239,
       "imdbRating": 6.99,
       "actors": [
@@ -19,15 +89,14 @@
     },
     {
       "id": 7,
-      "title": "Venus Wars (Venus Senki)",
-      "poster": "http://dummyimage.com/400x600.png/cc0000/ffffff",
+      "title": "Jaws",
+      "poster": "/assets/images/movies/jaws.jpg",
       "genre": [
-        "Action",
-        "Animation",
-        "Sci-Fi",
-        "War"
+        "Thriller",
+        "Horror",
+        "Adventure"
       ],
-      "year": 1992,
+      "year": 1975,
       "duration": 67,
       "imdbRating": 6.77,
       "actors": [
@@ -38,14 +107,13 @@
     },
     {
       "id": 8,
-      "title": "Godzilla vs. Mechagodzilla II (Gojira VS Mekagojira)",
+      "title": "Hellboy",
       "poster": null,
       "genre": [
-        "Action",
-        "Drama",
-        "Sci-Fi"
+        "Fantasy",
+        "Action"
       ],
-      "year": 1993,
+      "year": 2004,
       "duration": 121,
       "imdbRating": 5.36,
       "actors": [
@@ -56,12 +124,15 @@
     },
     {
       "id": 9,
-      "title": "Alien Nation: The Udara Legacy",
-      "poster": "http://dummyimage.com/400x600.png/5fa2dd/ffffff",
+      "title": "The Silence of the Lambs",
+      "poster": "/assets/images/movies/the-silence-of-the-lambs.jpg",
       "genre": [
-        "Sci-Fi"
+        "Horror",
+        "Thriller",
+        "Drama",
+        "Crime"
       ],
-      "year": 1997,
+      "year": 1991,
       "duration": 125,
       "imdbRating": 2.07,
       "actors": [
@@ -72,13 +143,13 @@
     },
     {
       "id": 10,
-      "title": "Butterflies Have No Memories 3",
-      "poster": "http://dummyimage.com/400x600.png/dddddd/000000",
+      "title": "Tarantula",
+      "poster": "/assets/images/movies/tarantula.jpg",
       "genre": [
-        "Nuevo Género",
-        "Otro"
+        "Science Fiction",
+        "Horror"
       ],
-      "year": 1990,
+      "year": 1955,
       "duration": 73,
       "imdbRating": 4.39,
       "actors": [
@@ -90,36 +161,36 @@
   "actors": [
     {
       "id": 1,
-      "first_name": "Isaak",
-      "last_name": "McQuode",
+      "first_name": "Will",
+      "last_name": "Smith",
       "gender": "Male",
       "bornCity": "Ciduren",
       "birthdate": "24/12/1957",
-      "img": "http://dummyimage.com/600x400.png/dddddd/000000",
+      "img": "/assets/images/actors/will-smith.jpg",
       "rating": 2.03,
       "movies": [
         3,
         7
       ],
-      "nombre_completo": "Isaak McQuode"
+      "nombre_completo": "Will Smith"
     },
     {
       "id": 2,
-      "first_name": "Rory",
-      "last_name": "Chanders",
+      "first_name": "Tom",
+      "last_name": "Hanks",
       "gender": "Male",
       "bornCity": "Cijengkol",
       "birthdate": "19/04/1975",
-      "img": "http://dummyimage.com/600x400.png/5fa2dd/000000",
+      "img": "/assets/images/actors/tom-hanks.jpg",
       "rating": 2.43,
       "movies": [],
-      "nombre_completo": "Rory Chanders"
+      "nombre_completo": "Tom Hanks"
     },
     {
       "id": 3,
-      "first_name": "Lew",
-      "last_name": "Meehan",
-      "gender": "Male",
+      "first_name": "Uma",
+      "last_name": "Thurman",
+      "gender": "Female",
       "bornCity": "Łanięta",
       "birthdate": "10/04/1986",
       "img": null,
@@ -129,32 +200,32 @@
         7,
         8
       ],
-      "nombre_completo": "Lew Meehan"
+      "nombre_completo": "Uma Thurman"
     },
     {
       "id": 4,
-      "first_name": "Marci",
-      "last_name": "Noads",
+      "first_name": "Margot",
+      "last_name": "Robbie",
       "gender": "Female",
       "bornCity": "Jurm",
       "birthdate": "04/08/1990",
-      "img": "http://dummyimage.com/600x400.png/4fa25d/000000",
+      "img": "/assets/images/actors/margot-robbie.jpg",
       "rating": 4.37,
       "movies": [
         1,
         6,
         8
       ],
-      "nombre_completo": "Marci Noads"
+      "nombre_completo": "Margot Robbie"
     },
     {
       "id": 5,
-      "first_name": "Jordan",
+      "first_name": "Gal Gadot",
       "last_name": "Yeskov",
-      "gender": "Male",
+      "gender": "Female",
       "bornCity": "Gouqi",
       "birthdate": "30/12/1990",
-      "img": "https://dummyimage.com/600x400.png/2f125d/ffffff",
+      "img": "/assets/images/actors/gal-gadot.jpg",
       "rating": 3.92,
       "movies": [
         1,
@@ -163,16 +234,16 @@
         7,
         8
       ],
-      "nombre_completo": "Jordan Yeskov"
+      "nombre_completo": "Gal Gadot"
     },
     {
       "id": 6,
-      "first_name": "Hale",
-      "last_name": "Bangs",
+      "first_name": "Tom",
+      "last_name": "Cruise",
       "gender": "Male",
       "bornCity": "Pitomača",
       "birthdate": "02/01/1968",
-      "img": "https://dummyimage.com/600x400.png/bf125d/ffffff",
+      "img": "/assets/images/actors/tom-cruise.jpg",
       "rating": 8.79,
       "movies": [
         1,
@@ -180,43 +251,43 @@
         5,
         10
       ],
-      "nombre_completo": "Hale Bangs"
+      "nombre_completo": "Tom Cruise"
     },
     {
       "id": 7,
-      "first_name": "Quint",
-      "last_name": "Critcher",
-      "gender": "Male",
+      "first_name": "Natalie",
+      "last_name": "Portman",
+      "gender": "Female",
       "bornCity": "Fulong",
       "birthdate": "04/09/1979",
-      "img": "https://dummyimage.com/600x400.png/bf12fd/ffffff",
+      "img": "/assets/images/actors/natalie-portman.jpg",
       "rating": 9.82,
       "movies": [
         5,
         9
       ],
-      "nombre_completo": "Quint Critcher"
+      "nombre_completo": "Natalie Portman"
     },
     {
       "id": 8,
-      "first_name": "Angela",
-      "last_name": "Kaming",
-      "gender": "Female",
+      "first_name": "Oscar",
+      "last_name": "Isaac",
+      "gender": "Male",
       "bornCity": "Khorramābād",
       "birthdate": "22/02/1966",
-      "img": "https://dummyimage.com/600x400.png/1f121d/ffffff",
+      "img": "/assets/images/actors/oscar-isaac.jpg",
       "rating": 7.42,
       "movies": [
         4,
         5,
         9
       ],
-      "nombre_completo": "Angela Kaming"
+      "nombre_completo": "Oscar Isaac"
     },
     {
       "id": 9,
-      "first_name": "Orson",
-      "last_name": "Cud",
+      "first_name": "Pierce",
+      "last_name": "Brosnan",
       "gender": "Female",
       "bornCity": "Notre-Dame-de-l'Île-Perrot",
       "birthdate": "14/09/1978",
@@ -227,21 +298,21 @@
         9,
         10
       ],
-      "nombre_completo": "Orson Cud"
+      "nombre_completo": "Pierce Brosnan"
     },
     {
       "id": 10,
-      "first_name": "Murielle",
-      "last_name": "Carvilla",
+      "first_name": "Olivia",
+      "last_name": "Wilde",
       "gender": "Female",
       "bornCity": "Wakimachi",
       "birthdate": "28/10/1953",
-      "img": "https://dummyimage.com/600x400.png/1f12ff/ffffff",
+      "img": "/assets/images/actors/olivia-wilde.jpg",
       "rating": 5.39,
       "movies": [
         4
       ],
-      "nombre_completo": "Murielle Carvilla"
+      "nombre_completo": "Olivia Wilde"
     }
   ],
   "companies": [
@@ -276,11 +347,8 @@
       "employees": 511,
       "rating": 8.09,
       "movies": [
-        5,
         6,
-        7,
-        1,
-        10
+        7
       ]
     },
     {
@@ -293,7 +361,6 @@
       "movies": [
         8,
         9,
-        2,
         3
       ]
     },

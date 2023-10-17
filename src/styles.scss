@@ -2,3 +2,113 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import '~css-star-rating/css/star-rating.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Allerta&display=swap');
+
+$slate-50: #f8fafc;
+$slate-100: #f1f5f9;
+$slate-200: #e2e8f0;
+$slate-300: #cbd5e1;
+$slate-400: #94a3b8;
+$slate-500: #64748b;
+$slate-600: #475569;
+$slate-700: #334155;
+$slate-800: #1e293b;
+$slate-900: #0f172a;
+$slate-950: #020617;
+
+$red-50: #fef2f2;
+$red-100: #fee2e2;
+$red-200: #fecaca;
+$red-300: #fca5a5;
+$red-400: #f87171;
+$red-500: #ef4444;
+$red-600: #dc2626;
+$red-700: #b91c1c;
+$red-800: #991b1b;
+$red-900: #7f1d1d;
+$red-950: #450a0a;
+
+body {
+  font-family:'Allerta', sans-serif;
+  font-size: 14px;
+}
+
+app-list-movies {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+app-list-actors {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+app-list-companies {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.btn-basic {
+  background: $slate-600;
+  color:#f8fafc;
+  border: none;
+  border-radius:5px;
+  width: 80px;
+  padding: 5px 0px;
+  &:hover {
+    background: $slate-950;
+    outline: 2px solid $slate-400;
+  }
+}
+
+.btn-warning {
+  background: $red-600;
+  color:#f8fafc;
+  border: none;
+  border-radius:5px;
+  width: 80px;
+  padding: 5px 0px;
+  &:hover {
+    background: $red-950;
+    outline: 2px solid $red-400;
+  }
+}
+
+.fs-11 {
+  font-size: 10px;
+
+}
+
+.fs-12 {
+  font-size: 12px;
+}
+
+.fs-20 {
+  font-size: 20px;
+}
+
+.filmo-title {
+  padding-bottom:10px;
+}
+
+.card-actors {
+  text-align: center;
+}
+
+.center-layout {
+  display: flex;
+  justify-content: center;
+}
+
+.text-dialog {
+  padding-bottom: 20px;
+}
+
+img {
+  width: 150px;
+  height: 200px;
+}
+
+.pointer {
+  cursor: pointer;
+}

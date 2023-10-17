@@ -1,32 +1,42 @@
-<div>
-  <ul>
-    <li><b>Name: </b>{{ company.name }}</li>
-    <li><b>Country: </b>{{ company.country }}</li>
-    <li><b>Create year: </b>
-      <ng-container *ngIf="company.createYear < 2000">
-        <img src="/assets/icons/camera-reels.svg" alt="Camera Reels Icon">
-      </ng-container>
-      {{ company.createYear }}
-    </li>
-    <li><b>Employees: </b>
-      <img src="/assets/icons/file-earmark-person.svg" alt="File Earmark Icon"> - {{ company.employees }}
-    </li>
-    <li><b>Rating: </b>
+<div class="card m-4" style="width: 15rem;">
+  <div class="card-body card-actors">
+    <h5 class="card-title">{{ company.name }}</h5>
+    <h6 class="card-subtitle mb-2 fs-12 text-muted">
       <star-rating
-        [starType]="'svg'"
-        [numOfStars]="10"
-        [rating]="company.rating"
-        [readOnly]="true"
-        >
-      </star-rating>
-    </li>
-    <li><b>Name: </b>{{ company.name }}</li>
-    <li><b>Movies produced: </b>
-      <span *ngFor="let movie of moviesProduced">
-        <ul>
-          <li>{{ movie.title }}</li>
-        </ul>
-      </span>
-      </li>
-  </ul>
+      [starType]="'svg'"
+      [numOfStars]="10"
+      [rating]="company.rating"
+      [readOnly]="true"
+      [size]="'small'"
+      >
+    </star-rating>
+    </h6>
+    <hr>
+    <div class="row fs-12">
+      <div class="col-6 text-start">
+        <div class="text-nowrap">
+          Create year:
+            <ng-container *ngIf="company.createYear < 2000">
+              <img src="/assets/icons/camera-reels.svg" alt="Camera Reels Icon" class="icon-camera">
+            </ng-container>
+            <span class="text-muted fs-11">{{ company.createYear }}</span>
+        </div>
+        <div class="text-nowrap">Country: <span class="text-muted fs-11">{{ company.country }}</span></div>
+      </div>
+      <div class="col-6 d-flex justify-content-evenly">
+        <div class="align-self-center">
+          <img src="/assets/icons/file-earmark-person.svg" alt="File Earmark Icon" class="icon-person">
+        </div>
+        <div class="align-self-center fs-20">{{ company.employees }}</div>
+      </div>
+      <div class="movies-produced">
+        <h6 class="card-title filmo-title">Movies produced:</h6>
+        <div *ngFor="let movie of moviesProduced">
+            <h4 [routerLink]="['/movies', movie.id ]" class="card-subtitle mb-2 fs-12 text-muted pointer">
+              <span class="filmo-text">{{ movie.title }}</span>
+            </h4>
+        </div>
+      </div>
+  </div>
 </div>
+
