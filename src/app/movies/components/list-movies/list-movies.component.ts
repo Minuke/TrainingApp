@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 import { Movie } from "src/app/interfaces/movie.interface";
 import { MoviesService } from "src/app/services/movies.service";
 
@@ -9,16 +10,17 @@ import { MoviesService } from "src/app/services/movies.service";
 })
 export class ListMoviesComponent implements OnInit{
 
-  public movies:Movie[] = [];
+  public movies: BehaviorSubject<Movie[]> = new BehaviorSubject<Movie[]>([]);
   public isLoading:boolean = true;
 
   constructor(private moviesService:MoviesService) {}
 
   ngOnInit(): void {
-    this.moviesService.getMovies().subscribe((movies:Movie[]) => {
-      this.movies = movies;
+    this.moviesService.getMovies().subscribe((movies: Movie[]) => {
+      this.movies.next(movies);
       this.isLoading = false;
     });
   }
+
 }
 

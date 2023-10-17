@@ -20,57 +20,6 @@
       ]
     },
     {
-      "id": 2,
-      "title": "Alien",
-      "poster": "/assets/images/movies/alien.jpg",
-      "genre": [
-        "Science Fiction",
-        "Horror"
-      ],
-      "year": 1079,
-      "duration": 161,
-      "imdbRating": 8.27,
-      "actors": [
-        4,
-        5,
-        6,
-        2
-      ]
-    },
-    {
-      "id": 3,
-      "title": "The Cabin in the Woods",
-      "poster": "/assets/images/movies/the-cabin-in-the-woods.jpg",
-      "genre": [
-        "Horror",
-        "Fantasy"
-      ],
-      "year": 2011,
-      "duration": 175,
-      "imdbRating": 6.25,
-      "actors": [
-        1
-      ]
-    },
-    {
-      "id": 4,
-      "title": "You’re Next",
-      "poster": "/assets/images/movies/you-are-next.jpg",
-      "genre": [
-        "Thriller",
-        "Horror",
-        "Mystery"
-      ],
-      "year": 2011,
-      "duration": 190,
-      "imdbRating": 3.66,
-      "actors": [
-        8,
-        9,
-        10
-      ]
-    },
-    {
       "id": 5,
       "title": "Mad Max",
       "poster": "/assets/images/movies/mad-max.jpg",
