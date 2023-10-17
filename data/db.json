@@ -1,6 +1,25 @@
 {
   "movies": [
     {
+      "id": 1,
+      "title": "Avengers",
+      "poster": "/assets/images/movies/avengers.jpg",
+      "genre": [
+        "Science Fiction",
+        "Adventure",
+        "Action"
+      ],
+      "year": 2012,
+      "duration": 161,
+      "imdbRating": 8.27,
+      "actors": [
+        4,
+        5,
+        6,
+        2
+      ]
+    },
+    {
       "id": 2,
       "title": "Alien",
       "poster": "/assets/images/movies/alien.jpg",

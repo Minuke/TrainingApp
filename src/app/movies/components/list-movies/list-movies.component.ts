@@ -5,13 +5,12 @@ import { MoviesService } from "src/app/services/movies.service";
 @Component({
   selector: 'app-list-movies',
   templateUrl: './list-movies.component.html',
-  styleUrls: ['./list-movies.component.scss']
+  styleUrls: ['./list-movies.component.scss'],
 })
 export class ListMoviesComponent implements OnInit{
 
   public movies:Movie[] = [];
   public isLoading:boolean = true;
-
 
   constructor(private moviesService:MoviesService) {}
 
@@ -21,5 +20,5 @@ export class ListMoviesComponent implements OnInit{
       this.isLoading = false;
     });
   }
-
 }
+
