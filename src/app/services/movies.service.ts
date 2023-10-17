@@ -16,7 +16,7 @@ export class MoviesService {
   movieDeleted$ = this.movieDeletedSource.asObservable();
 
   deleteMovieService() {
-    this.movieDeletedSource.next();
+    return this.movieDeletedSource.next();
   }
 
   getMovies():Observable<Movie[]> {

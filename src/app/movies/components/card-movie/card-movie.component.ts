@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges } from "@angular/core";
 import { Movie } from "src/app/interfaces/movie.interface";
 import { MoviesService } from "src/app/services/movies.service";
 
@@ -7,9 +7,10 @@ import { MoviesService } from "src/app/services/movies.service";
   templateUrl: './card-movie.component.html',
   styleUrls: ['./card-movie.component.scss'],
 })
-export class CardMovieComponent {
+export class CardMovieComponent implements OnDestroy, OnChanges{
 
   @Input() public movie:Movie;
+  @Output() public movieDeleted:EventEmitter<string> = new EventEmitter;
   public visible:boolean = false;
 
   constructor(private moviesService:MoviesService) {
@@ -28,7 +29,8 @@ export class CardMovieComponent {
   deleteMovie(movieId:number):void {
     this.moviesService.deleteMovie(movieId).subscribe(() => {
         this.closeDialog();
-        this.moviesService.deleteMovieService()
+        this.movieDeleted.emit(this.movie.title);
+        this.moviesService.deleteMovieService();
       });
   }
 
@@ -38,6 +40,13 @@ export class CardMovieComponent {
 
   closeDialog():void {
     this.visible = false;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
+  }
+  ngOnDestroy(): void {
+    console.log("The card has been destroyed");
   }
 
 }

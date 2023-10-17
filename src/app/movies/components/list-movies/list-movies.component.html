@@ -1,10 +1,14 @@
 
-<p-toast></p-toast>
+<p-toast position="top-right">
+  <ng-template let-message pTemplate="message">
+      <p innerHtml="{{message.detail}}"></p>
+  </ng-template>
+</p-toast>
 <ng-container *ngIf="isLoading; else showMovies">
   <p-progressSpinner></p-progressSpinner>
 </ng-container>
 <ng-template #showMovies>
-    <app-card-movie *ngFor="let movie of movies | async;" [movie]="movie"></app-card-movie>
+    <app-card-movie (movieDeleted)="receiveMovieDeleted($event)" *ngFor="let movie of movies | async;" [movie]="movie"></app-card-movie>
 </ng-template>
 
 

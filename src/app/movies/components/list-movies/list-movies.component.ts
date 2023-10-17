@@ -15,6 +15,7 @@ export class ListMoviesComponent implements OnInit{
   public movies: Observable<Movie[]> = new Observable<Movie[]>;
   public isLoading:boolean = true;
   public movieDeletedSubscription:Subscription = new Subscription();
+  public movieTitleDeleted:string = "";
 
   constructor(private moviesService:MoviesService, private messageService:MessageService) {}
 
@@ -30,12 +31,16 @@ export class ListMoviesComponent implements OnInit{
 
   refreshMovieList() {
     this.movies = this.moviesService.getMovies();
-    this.showSuccessToast("The movie has been removed");
+    const message = `The movie <b>${this.movieTitleDeleted}</b> has been removed`;
+    this.showSuccessToast(message);
   }
 
   showSuccessToast(message: string) {
     this.messageService.add({ severity: 'success', summary: 'Success', detail: message });
   }
 
+  receiveMovieDeleted(movieTitle:string) {
+    this.movieTitleDeleted = movieTitle
+  }
 }
 
