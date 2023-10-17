@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map, of } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, map, of } from 'rxjs';
 import { Movie } from '../interfaces/movie.interface';
 import { Actor } from '../interfaces/actor.interface';
 import { Company } from '../interfaces/company.interface';
@@ -11,6 +11,13 @@ export class MoviesService {
   private moviesUrl: string = "http://localhost:3000";
 
   constructor(private http: HttpClient) { }
+
+  private movieDeletedSource = new Subject<void>();
+  movieDeleted$ = this.movieDeletedSource.asObservable();
+
+  deleteMovieService() {
+    this.movieDeletedSource.next();
+  }
 
   getMovies():Observable<Movie[]> {
     return this.http.get<Movie[]>(`${ this.moviesUrl }/movies`);
