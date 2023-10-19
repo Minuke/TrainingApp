@@ -23,10 +23,10 @@ export class DetailsMovieComponent {
       id: 0,
       title: '',
       poster: null,
-      genre: [],
+      genres: [],
       year: 0,
       duration: 0,
-      imdbRating: 0,
+      rating: 0,
       actors: []
     };
   }

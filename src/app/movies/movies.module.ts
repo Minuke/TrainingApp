@@ -7,7 +7,7 @@ import { ListMoviesComponent } from "./components/list-movies/list-movies.compon
 import { MoviesRoutingModule } from "./movies-routing.module";
 import { SharedModule } from "../shared/shared.module";
 import { PipesModule } from "../pipes/pipes.module";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PrimeNgModule } from "../prime-ng/prime-ng.module";
 import { AddMovieComponent } from './components/add-movie/add-movie.component';
 
@@ -15,6 +15,6 @@ import { AddMovieComponent } from './components/add-movie/add-movie.component';
 @NgModule({
   declarations: [CardMovieComponent, ListMoviesComponent, DetailsMovieComponent, CardMovieComponent, AddMovieComponent],
   exports: [CardMovieComponent, ListMoviesComponent, DetailsMovieComponent, CardMovieComponent],
-  imports: [CommonModule, HttpClientModule, MoviesRoutingModule, SharedModule, PipesModule, FormsModule, PrimeNgModule]
+  imports: [CommonModule, HttpClientModule, MoviesRoutingModule, SharedModule, PipesModule, FormsModule, PrimeNgModule, ReactiveFormsModule]
 })
 export class MoviesModule { }

@@ -8,9 +8,10 @@
         <h2>{{ movie.title }}</h2>
         <hr>
         <div class="movie-data">
-          <div>Genres: <span class="text-muted fs-12">{{ movie.genre }}</span></div>
-          <div>Rating: <span class="text-muted fs-12">{{ movie.imdbRating }}</span></div>
+          <div>Genres: <span class="text-muted fs-12">{{ movie.genres }}</span></div>
+          <div>Rating: <span class="text-muted fs-12">{{ movie.rating }}</span></div>
           <div>Duration: <span class="text-muted fs-12">{{ movie.duration | Duration }}</span></div>
+          <div>Year: <span class="text-muted fs-12">{{ movie.year }}</span></div>
         </div>
 
         <h5>Actors in this movie:</h5>
@@ -22,7 +23,7 @@
       </div>
       <div class="col-6 center-layout" >
         <div class="align-self-center">
-          <img src="{{ movie.poster }}" alt="{{ movie.poster }}" class="img-details">
+          <img [src]="movie.poster | NotFoundImage" alt="{{ movie.poster }}" class="img-details">
         </div>
       </div>
     </div>

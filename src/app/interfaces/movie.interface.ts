@@ -2,9 +2,9 @@ export interface Movie {
   id:         number;
   title:      string;
   poster:     null | string;
-  genre:      string[];
+  genres:      string[];
   year:       number;
   duration:   number;
-  imdbRating: number;
+  rating: number;
   actors:     number[];
 }
