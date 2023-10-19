@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { MessageService } from "primeng/api";
+import { Message, MessageService } from "primeng/api";
 import { PaginatorState } from "primeng/paginator";
 import { Observable, Subscription, of } from "rxjs";
 import { Movie } from "src/app/interfaces/movie.interface";
@@ -22,6 +22,7 @@ export class ListMoviesComponent implements OnInit{
   rows: number = 3;
   totalRecords:number = 0;
   nextPage:number = 0;
+  messages: Message[] = [];
 
   constructor(private moviesService:MoviesService, private messageService:MessageService) {}
 
@@ -31,13 +32,20 @@ export class ListMoviesComponent implements OnInit{
         movie.title.toLowerCase().includes(term.toLowerCase())
       );
       this.filteredMovies = of(filteredMovies);
+
       this.moviesService.getMovies().subscribe((movies:Movie[]) => {
         this.movies = this.filteredMovies
+        this.movies.subscribe((data) => {
+          if(data.length === 0){
+            this.messages = [{ severity: 'info', summary: 'Info', detail: 'No hay peliculas con ese titulo' }];
+          }
+        })
       });
     });
   }
 
   ngOnInit(): void {
+
     this.movieDeletedSubscription = this.moviesService.movieDeleted$.subscribe(() => {
       this.refreshMovieList();
     });

@@ -1,4 +1,7 @@
 
+<div class="card">
+  <p-messages [value]="messages" [enableService]="false" [closable]="false"></p-messages>
+</div>
 <div>
   <!-- (onValue)="searchByMovie($event)" -->
   <app-search-box (onDebounce)="searchByMovie($event)" ></app-search-box>
