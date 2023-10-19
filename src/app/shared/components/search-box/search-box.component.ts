@@ -12,6 +12,8 @@ export class SearchBoxComponent implements OnInit {
 
   @Output() public onValue = new EventEmitter<string>();
   @Output() public onDebounce = new EventEmitter<string>();
+  public searchTerm:string = "";
+  public controller:boolean = false;
 
   ngOnInit(): void {
     this.debouncer.pipe(
@@ -26,6 +28,15 @@ export class SearchBoxComponent implements OnInit {
   }
 
   onKeyPress(searchTerm:string) {
-    this.debouncer.next(searchTerm);
+    this.searchTerm = searchTerm;
+    if (searchTerm.length >= 3) {
+      this.controller = false;
+      this.debouncer.next(searchTerm);
+    }else{
+      setTimeout(() => {
+        this.controller = true;
+      }, 1000)
+    }
+
   }
 }
