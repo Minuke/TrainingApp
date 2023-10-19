@@ -1,51 +1,70 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { Movie } from 'src/app/interfaces/movie.interface';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MoviesService } from '../../../services/movies.service';
+import { Movie } from 'src/app/interfaces/movie.interface';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Actor } from 'src/app/interfaces/actor.interface';
-import { Company } from 'src/app/interfaces/company.interface';
-import { Router } from '@angular/router';
+
 
 @Component({
-  selector: 'app-add-movie',
-  templateUrl: './add-movie.component.html',
-  styleUrls: ['./add-movie.component.scss']
+  selector: 'app-update-movie',
+  templateUrl: './update-movie.component.html',
+  styleUrls: ['./update-movie.component.scss']
 })
-export class AddMovieComponent implements OnInit{
+export class UpdateMovieComponent implements OnInit {
 
+  public movieId!: number;
+  public movie!:Movie;
   public movies:Movie[] = [];
-  public nextId:number = 0;
   public allGenres: string[] = [];
   public actors:Actor[] = [];
-  public companies:Company[] = [];
+  public idMovie:number = 0;
+
 
   public myForm:FormGroup = this.fb.group({
-    id: [this.nextId],
+    id: [this.idMovie],
     title: ['', [ Validators.required]],
     poster: [null],
     genres: [null, [this.atLeastOneCategorySelectedValidator]],
     actors: [null, [this.atLeastOneCategorySelectedValidator]],
-    companies: [null, [this.atLeastOneCategorySelectedValidator]],
     year: [null, [Validators.required, Validators.min(0)]],
     duration: [null, [Validators.required, Validators.min(0)]],
     rating: [null, [Validators.required, Validators.min(0), Validators.max(10)]],
+
   })
 
-  constructor(private fb: FormBuilder, private moviesService:MoviesService,  private router: Router){}
+  constructor(private route: ActivatedRoute, private moviesService:MoviesService, private fb: FormBuilder,  private router: Router) {}
 
-  ngOnInit(): void {
-    this.moviesService.getMovies().subscribe((movies:Movie[]) => {
-      this.movies = movies;
-      this.nextId = this.getNextMovieId();
-      this.myForm.patchValue({ id: this.nextId });
-      this.allGenres = this.getAllUniqueGenres();
-    });
+  ngOnInit() {
     this.moviesService.getActors().subscribe((actors:Actor[]) => {
       this.actors = actors;
     });
-    this.moviesService.getCompanies().subscribe((companies:Company[]) => {
-      this.companies = companies;
-    })
+
+
+
+    this.route.params.subscribe((params) => {
+      this.movieId = +params['id'];
+      this.moviesService.getMovieById(this.movieId).subscribe((movie:Movie) => {
+        this.movie = movie;
+        this.idMovie = movie.id;
+
+        this.myForm.patchValue({
+          id: this.movie.id,
+          title: this.movie.title,
+          poster: this.movie.poster,
+          genres: this.movie.genres,
+          actors: this.movie.actors,
+          year: this.movie.year,
+          duration: this.movie.duration,
+          rating: this.movie.rating
+        });
+        this.moviesService.getMovies().subscribe((data) => {
+          this.movies = data;
+          this.allGenres = this.getAllUniqueGenres();
+        })
+
+      });
+    });
   }
 
   isValidField(field: string): boolean | null {
@@ -71,11 +90,6 @@ export class AddMovieComponent implements OnInit{
     return null;
   }
 
-  getNextMovieId(): number {
-    const maxId = Math.max(...this.movies.map(movie => movie.id), 0);
-    return maxId + 1;
-  }
-
   getAllUniqueGenres(): string[] {
     const uniqueGenres = new Set<string>();
     this.movies.forEach((movie: Movie) => {
@@ -99,11 +113,12 @@ export class AddMovieComponent implements OnInit{
       this.myForm.markAllAsTouched();
       return;
     }
-    const newMovieData = this.myForm.value;
-    this.moviesService.addMovie(newMovieData).subscribe((result) => {
+    const updateMovieData = this.myForm.value;
+    this.moviesService.updateMovie(updateMovieData.id, updateMovieData).subscribe((result) => {
       if (result) {
         this.router.navigate(['/movies', this.myForm.value.id]);
       }
     });
   }
+
 }

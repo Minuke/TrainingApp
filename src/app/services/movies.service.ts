@@ -51,4 +51,9 @@ export class MoviesService {
     return this.http.post<Movie>(`${this.moviesUrl }/movies`, newMovie);
   }
 
+  updateMovie(id: number, updatedMovieData: Movie): Observable<Movie> {
+    const url = `${this.moviesUrl }/movies/${ id }`;
+    return this.http.put<Movie>(url, updatedMovieData);
+  }
+
 }

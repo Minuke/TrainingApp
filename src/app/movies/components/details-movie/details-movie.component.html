@@ -26,7 +26,9 @@
           <img [src]="movie.poster | NotFoundImage" alt="{{ movie.poster }}" class="img-details">
         </div>
       </div>
+      <button [routerLink]="['/movies', movie.id, 'update-movie']" class="btn-basic m-4">Update</button>
     </div>
+
 </ng-template>
 
 

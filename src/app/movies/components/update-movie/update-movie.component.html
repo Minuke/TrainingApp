@@ -13,30 +13,22 @@
     <input type="text" class="form-control" formControlName="poster" placeholder="Poster">
     <span *ngIf="isValidField('poster')" class="form-text text-danger">{{ getFieldError('poster') }}</span>
   </div>
-  <!-- Genres Field -->
+    <!-- Genres Field -->
+    <div class="m-4">
+      <label for="genres">Genres:</label>
+      <select class="form-control" formControlName="genres" id="genres" multiple>
+        <option *ngFor="let genre of allGenres" [value]="genre">{{ genre }}</option>
+      </select>
+      <span *ngIf="isValidField('genres')" class="form-text text-danger">{{ getFieldError('genres') }}</span>
+    </div>
+      <!-- Actors Field -->
   <div class="m-4">
-    <label for="genres">Genres:</label>
-    <select class="form-control" formControlName="genres" id="genres" multiple>
-      <option *ngFor="let genre of allGenres" [value]="genre">{{ genre }}</option>
+    <label for="actors">Actors:</label>
+    <select class="form-control" formControlName="actors" id="actors" multiple>
+      <option *ngFor="let actor of actors" [value]="actor.id">{{ actor.nombre_completo }}</option>
     </select>
-    <span *ngIf="isValidField('genres')" class="form-text text-danger">{{ getFieldError('genres') }}</span>
-  </div>
-  <!-- Actors Field -->
-  <div class="m-4">
-        <label for="actors">Actors:</label>
-        <select class="form-control" formControlName="actors" id="actors" multiple>
-          <option *ngFor="let actor of actors" [value]="actor.id">{{ actor.nombre_completo }}</option>
-        </select>
-        <span *ngIf="isValidField('actors')" class="form-text text-danger">{{ getFieldError('actors') }}</span>
-  </div>
-  <!-- Companies Field -->
-  <div class="m-4">
-            <label for="companies">Companies:</label>
-            <select class="form-control" formControlName="companies" id="companies" multiple>
-              <option *ngFor="let company of companies" [value]="company.id">{{ company.name }}</option>
-            </select>
-            <span *ngIf="isValidField('companies')" class="form-text text-danger">{{ getFieldError('companies') }}</span>
-  </div>
+    <span *ngIf="isValidField('actors')" class="form-text text-danger">{{ getFieldError('actors') }}</span>
+</div>
   <!-- Year Field -->
   <div class="m-4">
     <label for="year">Year:</label>
@@ -55,6 +47,7 @@
     <input type="number" class="form-control" formControlName="rating" placeholder="Rating">
     <span *ngIf="isValidField('rating')" class="form-text text-danger">{{ getFieldError('rating') }}</span>
   </div>
+
   <button type="submit" class="btn btn-primary float-end">Guardar</button>
 </form>
 

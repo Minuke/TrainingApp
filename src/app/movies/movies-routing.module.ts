@@ -4,6 +4,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { DetailsMovieComponent } from "./components/details-movie/details-movie.component";
 import { ListMoviesComponent } from "./components/list-movies/list-movies.component";
 import { AddMovieComponent } from "./components/add-movie/add-movie.component";
+import { UpdateMovieComponent } from "./components/update-movie/update-movie.component";
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'add-movie',
     component: AddMovieComponent,
+  },
+  {
+    path: ':id/update-movie',
+    component: UpdateMovieComponent,
   },
   {
     path: ':id',
