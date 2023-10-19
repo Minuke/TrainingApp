@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MessageService } from "primeng/api";
+import { PaginatorState } from "primeng/paginator";
 import { Observable, Subscription } from "rxjs";
 import { Movie } from "src/app/interfaces/movie.interface";
 import { MoviesService } from "src/app/services/movies.service";
@@ -16,6 +17,10 @@ export class ListMoviesComponent implements OnInit{
   public isLoading:boolean = true;
   public movieDeletedSubscription:Subscription = new Subscription();
   public movieTitleDeleted:string = "";
+  first: number = 0;
+  rows: number = 3;
+  totalRecords:number = 0;
+  nextPage:number = 0;
 
   constructor(private moviesService:MoviesService, private messageService:MessageService) {}
 
@@ -23,10 +28,28 @@ export class ListMoviesComponent implements OnInit{
     this.movieDeletedSubscription = this.moviesService.movieDeleted$.subscribe(() => {
       this.refreshMovieList();
     });
-    this.moviesService.getMovies().subscribe(() => {
-      this.movies = this.moviesService.getMovies();
+    this.moviesService.getMovies().subscribe((movies:Movie[]) => {
+      this.movies = this.moviesService.getMoviesPagination(this.nextPage,this.rows);
       this.isLoading = false;
+      this.totalRecords = movies.length;
     });
+  }
+
+  onPageChange(event: PaginatorState) {
+    if (event.page !== undefined) {
+      this.nextPage = event.page + 1;
+    }
+
+    if (event.first !== undefined) {
+      this.first = event.first;
+    }
+    if (event.rows !== undefined) {
+      this.rows = event.rows;
+    }
+    this.moviesService.getMoviesPagination(this.nextPage,this.rows).subscribe((data)=> {
+      this.movies = this.moviesService.getMoviesPagination(this.nextPage,this.rows);
+    });
+
   }
 
   refreshMovieList() {

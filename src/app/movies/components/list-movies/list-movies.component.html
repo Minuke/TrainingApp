@@ -10,6 +10,10 @@
 <ng-template #showMovies>
     <app-card-movie (movieDeleted)="receiveMovieDeleted($event)" *ngFor="let movie of movies | async;" [movie]="movie"></app-card-movie>
 </ng-template>
+<div>
+  <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords"></p-paginator>
+</div>
+
 
 
 

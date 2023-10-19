@@ -23,6 +23,10 @@ export class MoviesService {
     return this.http.get<Movie[]>(`${ this.moviesUrl }/movies`);
   }
 
+  getMoviesPagination(page:number, limit:number):Observable<Movie[]> {
+    return this.http.get<Movie[]>(`${ this.moviesUrl }/movies?_page=${page}&_limit=${limit}`);
+  }
+
   getActors():Observable<Actor[]> {
     return this.http.get<Actor[]>(`${ this.moviesUrl }/actors`);
   }
