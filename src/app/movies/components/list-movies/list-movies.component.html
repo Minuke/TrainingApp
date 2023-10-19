@@ -1,6 +1,7 @@
 
 <div>
-  <app-search-box (onValue)="searchByMovie($event)"></app-search-box>
+  <!-- (onValue)="searchByMovie($event)" -->
+  <app-search-box (onDebounce)="searchByMovie($event)" ></app-search-box>
 </div>
 <p-toast position="top-right">
   <ng-template let-message pTemplate="message">

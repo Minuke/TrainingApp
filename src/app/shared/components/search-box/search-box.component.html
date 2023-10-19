@@ -1,1 +1,7 @@
-<input (keyup.enter)="emitValue(txtSearchBox.value)" type="text" placeholder="Buscar pelicula..." class="form-control" #txtSearchBox>
+<!-- (keyup.enter)="emitValue(txtSearchBox.value)" -->
+<input
+  (keyup)="onKeyPress(txtSearchBox.value)"
+  type="text"
+  placeholder="Buscar pelicula..."
+  class="form-control"
+  #txtSearchBox>
