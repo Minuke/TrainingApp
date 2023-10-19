@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MessageService } from "primeng/api";
 import { PaginatorState } from "primeng/paginator";
-import { Observable, Subscription } from "rxjs";
+import { Observable, Subscription, of } from "rxjs";
 import { Movie } from "src/app/interfaces/movie.interface";
 import { MoviesService } from "src/app/services/movies.service";
 
@@ -14,6 +14,7 @@ import { MoviesService } from "src/app/services/movies.service";
 export class ListMoviesComponent implements OnInit{
 
   public movies: Observable<Movie[]> = new Observable<Movie[]>;
+  public filteredMovies: Observable<Movie[]> = new Observable<Movie[]>;
   public isLoading:boolean = true;
   public movieDeletedSubscription:Subscription = new Subscription();
   public movieTitleDeleted:string = "";
@@ -23,6 +24,18 @@ export class ListMoviesComponent implements OnInit{
   nextPage:number = 0;
 
   constructor(private moviesService:MoviesService, private messageService:MessageService) {}
+
+  searchByMovie(term:string) {
+    this.moviesService.getMovies().subscribe((movies: Movie[]) => {
+      const filteredMovies = movies.filter((movie) =>
+        movie.title.toLowerCase().includes(term.toLowerCase())
+      );
+      this.filteredMovies = of(filteredMovies);
+      this.moviesService.getMovies().subscribe((movies:Movie[]) => {
+        this.movies = this.filteredMovies
+      });
+    });
+  }
 
   ngOnInit(): void {
     this.movieDeletedSubscription = this.moviesService.movieDeleted$.subscribe(() => {
