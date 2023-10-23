@@ -1,9 +1,7 @@
-<!-- (keyup.enter)="emitValue(txtSearchBox.value)" -->
-{{searchTerm}}
 <input
   (keyup)="onKeyPress(txtSearchBox.value)"
   type="text"
-  placeholder="Buscar pelicula..."
+  placeholder="Search movie..."
   class="form-control"
   #txtSearchBox>
   <span *ngIf="(searchTerm.length > 0) && (searchTerm.length < 3) && (controller)" class="form-text text-danger">Escribe mas</span>

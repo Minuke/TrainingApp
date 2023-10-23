@@ -29,10 +29,13 @@ export class CardActorComponent implements OnInit{
     };
   }
   ngOnInit(): void {
+    // funcion initActor en constructor
+    // en service tener un metodo que tener los datos de actores y movies, combinacion RXJS
     this.actor.movies.forEach((movie) => {
-      this.moviesService.getMovieById(movie).subscribe((data) => {
-        this.moviesInActor.push(data);
-      })
-    })
+        this.moviesService.getMovieById(movie).subscribe((data) => {
+            this.moviesInActor.push(data);
+        })
+      }
+    )
   }
 }

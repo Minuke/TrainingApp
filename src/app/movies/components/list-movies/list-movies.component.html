@@ -1,25 +1,34 @@
-
-<div class="card">
-  <p-messages [value]="messages" [enableService]="false" [closable]="false"></p-messages>
-</div>
-<div>
-  <!-- (onValue)="searchByMovie($event)" -->
-  <app-search-box (onDebounce)="searchByMovie($event)" ></app-search-box>
-</div>
-<p-toast position="top-right">
-  <ng-template let-message pTemplate="message">
-      <p innerHtml="{{message.detail}}"></p>
-  </ng-template>
-</p-toast>
-<ng-container *ngIf="isLoading; else showMovies">
-  <p-progressSpinner></p-progressSpinner>
-</ng-container>
-<ng-template #showMovies>
-    <app-card-movie (movieDeleted)="receiveMovieDeleted($event)" *ngFor="let movie of movies | async;" [movie]="movie"></app-card-movie>
-</ng-template>
-<div>
-  <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords"></p-paginator>
-</div>
+<main class="container">
+  <!-- Toast Message When Deleting Movie -->
+  <section>
+    <p-toast position="top-right">
+      <ng-template let-message pTemplate="message">
+          <p innerHtml="{{message.detail}}"></p>
+      </ng-template>
+    </p-toast>
+  </section>
+  <!-- Search Box -->
+  <section>
+      <app-search-box (onDebounce)="searchByMovie($event)" ></app-search-box>
+  </section>
+  <!-- Movie Not Found Message-->
+  <section *ngIf="showToast">
+    <p-messages [value]="messages" [closable]="false"></p-messages>
+  </section>
+  <!-- List Movies -->
+  <section class="card-layout">
+    <ng-container *ngIf="isLoading; else showMovies">
+      <p-progressSpinner></p-progressSpinner>
+    </ng-container>
+    <ng-template #showMovies>
+        <app-card-movie (movieDeleted)="receiveMovieDeleted($event)" *ngFor="let movie of movies | async;" [movie]="movie"></app-card-movie>
+    </ng-template>
+  </section>
+  <!-- Paginator -->
+  <section *ngIf="showPagination">
+    <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords"></p-paginator>
+  </section>
+</main>
 
 
 

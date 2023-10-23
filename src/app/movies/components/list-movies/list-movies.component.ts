@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Message, MessageService } from "primeng/api";
 import { PaginatorState } from "primeng/paginator";
-import { Observable, Subscription, of } from "rxjs";
+import { Observable, Subscription, of, switchMap } from "rxjs";
 import { Movie } from "src/app/interfaces/movie.interface";
 import { MoviesService } from "src/app/services/movies.service";
 
@@ -18,30 +18,39 @@ export class ListMoviesComponent implements OnInit{
   public isLoading:boolean = true;
   public movieDeletedSubscription:Subscription = new Subscription();
   public movieTitleDeleted:string = "";
-  first: number = 0;
-  rows: number = 3;
-  totalRecords:number = 0;
-  nextPage:number = 0;
-  messages: Message[] = [];
+  public first: number = 0;
+  public rows: number = 6;
+  public totalRecords:number = 0;
+  public nextPage:number = 0;
+  public messages: Message[] = [];
+  public showPagination:boolean = true;
+  public showToast:boolean = false;
 
   constructor(private moviesService:MoviesService, private messageService:MessageService) {}
 
-  searchByMovie(term:string) {
-    this.moviesService.getMovies().subscribe((movies: Movie[]) => {
-      const filteredMovies = movies.filter((movie) =>
-        movie.title.toLowerCase().includes(term.toLowerCase())
-      );
-      this.filteredMovies = of(filteredMovies);
-
-      this.moviesService.getMovies().subscribe((movies:Movie[]) => {
-        this.movies = this.filteredMovies
-        this.movies.subscribe((data) => {
-          if(data.length === 0){
-            this.messages = [{ severity: 'info', summary: 'Info', detail: 'No hay peliculas con ese titulo' }];
-          }
-        })
-      });
+  searchByMovie(term: string) {
+    this.moviesService.getMovies().pipe(
+      switchMap((movies: Movie[]) => {
+        const filteredMovies = movies.filter((movie) =>
+          movie.title.toLowerCase().includes(term.toLowerCase())
+        );
+        this.filteredMovies = of(filteredMovies);
+        return this.filteredMovies;
+      })
+    ).subscribe((filteredMovies: Movie[]) => {
+      this.movies = of(filteredMovies);
+      if (filteredMovies.length === 0) {
+        this.showPagination = false;
+        this.messages = [{ severity: 'info', summary: 'Info', detail: 'There are no movies with this title' }];
+        this.clear();
+      }
     });
+  }
+
+  clear() {
+    setTimeout(() => {
+      this.messages = [];
+    }, 1000);
   }
 
   ngOnInit(): void {

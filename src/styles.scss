@@ -48,6 +48,10 @@ app-list-companies {
   flex-wrap: wrap;
 }
 
+section {
+  padding: 10px,
+}
+
 .btn-basic {
   background: $slate-600;
   color:#f8fafc;
@@ -112,3 +116,15 @@ img {
 .pointer {
   cursor: pointer;
 }
+
+.card-layout {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+
+
+
+
