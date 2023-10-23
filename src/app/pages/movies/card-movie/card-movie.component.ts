@@ -9,22 +9,11 @@ import { MoviesService } from "src/app/services/movies.service";
 })
 export class CardMovieComponent implements OnDestroy, OnChanges{
 
-  @Input() public movie:Movie;
+  @Input() public movie!:Movie;
   @Output() public movieDeleted:EventEmitter<string> = new EventEmitter;
   public visible:boolean = false;
 
-  constructor(private moviesService:MoviesService) {
-    this.movie = {
-      id: 0,
-      title: '',
-      poster: null,
-      genres: [],
-      year: 0,
-      duration: 0,
-      rating: 0,
-      actors: []
-    };
-  }
+  constructor(private moviesService:MoviesService) {}
 
   deleteMovie(movieId:number):void {
     this.moviesService.deleteMovie(movieId).subscribe(() => {

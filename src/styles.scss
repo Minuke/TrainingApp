@@ -124,6 +124,45 @@ img {
   justify-content: space-evenly;
 }
 
+.card-data {
+  padding: 10px 10px 0;
+}
+
+.buttons-movie {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.buttons-movie > button {
+  align-self: center;
+}
+
+.img-details {
+  width: 250px;
+  height: 300px;
+}
+
+app-update-movie {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+app-add-movie {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.button-update {
+  margin:10px 0 0 0;
+}
+
+
+
 
 
 

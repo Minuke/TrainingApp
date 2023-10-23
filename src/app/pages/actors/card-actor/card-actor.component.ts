@@ -12,23 +12,10 @@ import { MoviesService } from 'src/app/services/movies.service';
 })
 export class CardActorComponent implements OnInit{
 
-  @Input() public actor:Actor;
+  @Input() public actor!:Actor;
   public moviesInActor:Movie[] = []
 
-  constructor(private moviesService:MoviesService) {
-    this.actor = {
-      id: 0,
-      first_name: "",
-      last_name: "",
-      gender: Gender.Male,
-      bornCity: "",
-      birthdate: "",
-      img: null,
-      rating: 0,
-      movies: [],
-      nombre_completo: "",
-    };
-  }
+  constructor(private moviesService:MoviesService) {}
   ngOnInit(): void {
   const movieObservables = this.actor.movies.map(movieId => this.moviesService.getMovieById(movieId));
   forkJoin(movieObservables).subscribe(movies => {

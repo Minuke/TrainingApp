@@ -14,22 +14,11 @@ import { MoviesService } from "src/app/services/movies.service";
 })
 export class DetailsMovieComponent {
 
-  public movie:Movie;
+  public movie!:Movie;
   public actorsInMovie:Actor[] = [];
   public isLoading:boolean = true;
 
-  constructor(private activatedRoute: ActivatedRoute, private moviesService:MoviesService) {
-    this.movie = {
-      id: 0,
-      title: '',
-      poster: null,
-      genres: [],
-      year: 0,
-      duration: 0,
-      rating: 0,
-      actors: []
-    };
-  }
+  constructor(private activatedRoute: ActivatedRoute, private moviesService:MoviesService) {}
 
   ngOnInit(): void {
     this.activatedRoute.params

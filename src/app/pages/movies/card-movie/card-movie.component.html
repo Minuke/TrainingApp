@@ -1,12 +1,12 @@
 
-<div class="card m-4" style="width: 15rem;">
+<div class="card m-4" style="width: 15rem; height:300px;">
   <img [src]="movie.poster | NotFoundImage" alt="{{movie.poster}}" class="card-img-top">
-  <div class="card-body">
+  <div class="card-data">
     <h5 class="card-title">{{ movie.title }}</h5>
-    <div class="buttons-card">
-      <button [routerLink]="['/movies', movie.id ]" class="btn-basic me-4">Details</button>
-      <button (click)="showDialog()" class="btn-warning">Delete</button>
-    </div>
+  </div>
+  <div class="buttons-card buttons-movie">
+    <button [routerLink]="['/movies', movie.id ]" class="btn-basic me-4">Details</button>
+    <button (click)="showDialog()" class="btn-warning">Delete</button>
   </div>
 </div>
 

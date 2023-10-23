@@ -11,20 +11,10 @@ import { forkJoin } from 'rxjs';
 })
 export class CardCompanyComponent implements OnInit {
 
-  @Input() public company:Company;
+  @Input() public company!:Company;
   public moviesProduced:Movie[] = [];
 
-  constructor(private moviesService:MoviesService) {
-    this.company = {
-      id: 0,
-      name: "",
-      country: "",
-      createYear: 0,
-      employees: 0,
-      rating: 0,
-      movies: [],
-    };
-  }
+  constructor(private moviesService:MoviesService) {}
   ngOnInit(): void {
     const movieObservables = this.company.movies.map(movieId => this.moviesService.getMovieById(movieId));
     forkJoin(movieObservables).subscribe(movies => {

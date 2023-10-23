@@ -1,5 +1,4 @@
 <h2>Add movie</h2>
-<hr>
 <form [formGroup]="myForm" (ngSubmit)="onSave()" autocomplete="off">
   <!-- Title Field -->
   <div class="m-4">
@@ -59,7 +58,7 @@
 </form>
 
 
-<div class="row">
+<div class="row" style="margin:20px;">
     <div class="col">
         <span>Valid</span>
         <pre>{{ myForm.valid | json }}</pre>
