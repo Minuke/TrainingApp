@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Company } from 'src/app/interfaces/company.interface';
 import { MoviesService } from '../../../services/movies.service';
 import { Movie } from 'src/app/interfaces/movie.interface';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-card-company',
@@ -25,10 +26,9 @@ export class CardCompanyComponent implements OnInit {
     };
   }
   ngOnInit(): void {
-    this.company.movies.forEach((movieId:number) => {
-      this.moviesService.getMovieById(movieId).subscribe((movie:Movie) => {
-        this.moviesProduced.push(movie);
-      })
-    })
+    const movieObservables = this.company.movies.map(movieId => this.moviesService.getMovieById(movieId));
+    forkJoin(movieObservables).subscribe(movies => {
+      this.moviesProduced = movies;
+    });
   }
 }

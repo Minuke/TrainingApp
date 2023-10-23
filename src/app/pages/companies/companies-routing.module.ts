@@ -1,12 +1,12 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { ListActorsComponent } from "./components/list-actors/list-actors.component";
+import { ListCompaniesComponent } from "./list-companies/list-companies.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: ListActorsComponent
+    component: ListCompaniesComponent
   }
 ]
 
@@ -15,4 +15,4 @@ const routes: Routes = [
   exports: [RouterModule],
   imports: [CommonModule, RouterModule.forChild(routes)]
 })
-export class ActorsRoutingModule { }
+export class CompaniesRoutingModule { }

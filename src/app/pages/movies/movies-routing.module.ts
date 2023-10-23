@@ -1,10 +1,10 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { DetailsMovieComponent } from "./components/details-movie/details-movie.component";
-import { ListMoviesComponent } from "./components/list-movies/list-movies.component";
-import { AddMovieComponent } from "./components/add-movie/add-movie.component";
-import { UpdateMovieComponent } from "./components/update-movie/update-movie.component";
+import { AddMovieComponent } from "./add-movie/add-movie.component";
+import { DetailsMovieComponent } from "./details-movie/details-movie.component";
+import { ListMoviesComponent } from "./list-movies/list-movies.component";
+import { UpdateMovieComponent } from "./update-movie/update-movie.component";
 
 const routes: Routes = [
   {

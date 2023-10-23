@@ -1,12 +1,14 @@
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
-import { CardActorComponent } from "./components/card-actor/card-actor.component";
-import { ListActorsComponent } from "./components/list-actors/list-actors.component";
+
 import { ActorsRoutingModule } from "./actors-routing.module";
-import { PipesModule } from "../pipes/pipes.module";
-import { SharedModule } from "../shared/shared.module";
-import { PrimeNgModule } from "../prime-ng/prime-ng.module";
+import { PipesModule } from "src/app/pipes/pipes.module";
+import { PrimeNgModule } from "src/app/prime-ng/prime-ng.module";
+import { CardActorComponent } from "./card-actor/card-actor.component";
+import { ListActorsComponent } from "./list-actors/list-actors.component";
+import { SharedModule } from "src/app/shared/shared.module";
+
 
 @NgModule({
   declarations: [ListActorsComponent, CardActorComponent],

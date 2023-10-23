@@ -1,5 +1,6 @@
 
 import { Component, Input, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
 import { Actor, Gender } from 'src/app/interfaces/actor.interface';
 import { Movie } from 'src/app/interfaces/movie.interface';
 import { MoviesService } from 'src/app/services/movies.service';
@@ -29,13 +30,9 @@ export class CardActorComponent implements OnInit{
     };
   }
   ngOnInit(): void {
-    // funcion initActor en constructor
-    // en service tener un metodo que tener los datos de actores y movies, combinacion RXJS
-    this.actor.movies.forEach((movie) => {
-        this.moviesService.getMovieById(movie).subscribe((data) => {
-            this.moviesInActor.push(data);
-        })
-      }
-    )
+  const movieObservables = this.actor.movies.map(movieId => this.moviesService.getMovieById(movieId));
+  forkJoin(movieObservables).subscribe(movies => {
+    this.moviesInActor = movies;
+  });
   }
 }

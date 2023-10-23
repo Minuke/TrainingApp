@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subject, map, of } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Movie } from '../interfaces/movie.interface';
 import { Actor } from '../interfaces/actor.interface';
 import { Company } from '../interfaces/company.interface';

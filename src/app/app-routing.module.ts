@@ -5,15 +5,15 @@ import { Routes, RouterModule } from "@angular/router";
 const routes:Routes = [
   {
     path: 'movies',
-    loadChildren: () => import('./movies/movies.module').then( m => m.MoviesModule )
+    loadChildren: () => import('./pages/movies/movies.module').then( m => m.MoviesModule )
   },
   {
     path: 'actors',
-    loadChildren: () => import('./actors/actors.module').then( m => m.ActorsModule )
+    loadChildren: () => import('./pages/actors/actors.module').then( m => m.ActorsModule )
   },
   {
     path: 'companies',
-    loadChildren: () => import('./companies/companies.module').then( m => m.CompaniesModule )
+    loadChildren: () => import('./pages/companies/companies.module').then( m => m.CompaniesModule )
   },
   {
     path: '**',
