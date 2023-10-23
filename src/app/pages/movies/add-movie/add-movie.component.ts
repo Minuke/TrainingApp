@@ -26,7 +26,7 @@ export class AddMovieComponent implements OnInit{
     genres: [null, [this.atLeastOneCategorySelectedValidator]],
     actors: [null, [this.atLeastOneCategorySelectedValidator]],
     companies: [null, [this.atLeastOneCategorySelectedValidator]],
-    year: [null, [Validators.required, Validators.min(0)]],
+    year: [null, [Validators.required, Validators.min(1950)]],
     duration: [null, [Validators.required, Validators.min(0)]],
     rating: [null, [Validators.required, Validators.min(0), Validators.max(10)]],
   })
@@ -58,10 +58,11 @@ export class AddMovieComponent implements OnInit{
     const errors = this.myForm.controls[field].errors || {};
     for (const key of Object.keys(errors) ) {
       switch( key ) {
+
         case 'required':
           return 'Este campo es requerido';
         case 'min':
-          return `Tiene que ser un valor positivo`;
+          return `Tiene que ser un valor mayor que ${errors['min'].min}`;
         case 'max':
             return `Tiene que ser un valor entre 0 y 10`;
         case 'atLeastOneCategoryRequired':
@@ -100,6 +101,7 @@ export class AddMovieComponent implements OnInit{
       return;
     }
     const newMovieData = this.myForm.value;
+    newMovieData.title += ' PELÍCULA AÑADIDA';
     this.moviesService.addMovie(newMovieData).subscribe((result) => {
       if (result) {
         this.router.navigate(['/movies', this.myForm.value.id]);
